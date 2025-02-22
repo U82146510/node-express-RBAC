@@ -31,7 +31,7 @@ export const register_user = async(req:Request<{},{},reg_params>,res:Response,ne
     }
     try {
         const existing_user = await User.findOne({email:value.email});
-        if(!existing_user){
+        if(existing_user){
             res.status(409).json({message:'user already exists'});
             return;
         }
